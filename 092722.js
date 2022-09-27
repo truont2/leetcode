@@ -73,3 +73,59 @@ var search = function(nums, target) {
 
 
 console.log(search(nums, target))
+
+
+// move zeroes
+// Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+// Note that you must do this in-place without making a copy of the array.
+
+// example
+// Input: nums = [0,1,0,3,12]
+// Output: [1,3,12,0,0]\
+
+// input array of numbers 
+// output, all the zeroes are moved to the end of the array
+// apporach: use two pointers, one to check the element in the input and the other for the index of the non zero elements
+
+const num = [0,1,0,3,12]
+var moveZeroes = function(nums) {
+    let zeroIndex = 0;
+
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] !== 0) {
+            let temp = nums[zeroIndex];
+            nums[zeroIndex] = nums[i];
+            nums[i] = temp;
+            zeroIndex++;
+        }
+    }
+
+    return nums;
+}
+// how the solution works
+// every time you find a non zero value, you swap the values with where you would put it in the front of the array
+// example 
+/* 
+[0,1,0,3,12]
+zeroIndex = 0;
+i = 0; 
+
+skip bc nums[i] === 0
+
+[0,1,0,3,12]
+zeroIndex = 0;
+i = 1; 
+
+swap => [1,0,0,3,12]
+zeroIndex = 1;
+
+
+[1,0,0,3,12]
+zeroIndex = 1;
+i = 3; when i = 3 swap
+[1,3,0,0,12]
+
+then continue ... 
+*/
+console.log(moveZeroes(num));
