@@ -67,5 +67,8 @@ var isIsomorphic = function(s, t) {
     return true;
 };
 
+// apporach: put words into separate maps
+// check if its the first time encountering the character anad save it
+// if it is already saved, make sure the mapping is mapping to the same character from both sides
 let s = "egg", t = "add"
 console.log(isIsomorphic(s, t));
