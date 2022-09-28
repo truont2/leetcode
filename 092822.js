@@ -31,4 +31,41 @@ var twoSum = function(numbers, target) {
     return null;
 };
 // two pointers or double for loop
-console.log(twoSum(numbers, target));
+// console.log(twoSum(numbers, target));
+
+
+// Isomorphic String 
+/* 
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+*/
+
+// Input: s = "egg", t = "add" => output true
+
+var isIsomorphic = function(s, t) {
+    // store everything into two map
+
+    let charMapS ={};
+    let charMapT = {}
+    for(let i = 0; i < s.length; i++) {
+        // if seeing for the first time
+        if(charMapS[s.charAt(i)] === undefined && charMapT[t.charAt(i)] === undefined) {
+            charMapS[s.charAt(i)] = t.charAt(i);
+            charMapT[t.charAt(i)] = s.charAt(i)
+        } 
+
+        // Case 2: Ether mapping doesn't exist in one of the dictionaries or Mapping exists and
+        // it doesn't match in either of the dictionaries or both 
+        if((charMapS[s.charAt(i)] !== t.charAt(i) && charMapT[t.charAt(i)] !== s.charAt(i))){
+            return false;
+        }
+    }
+
+    return true;
+};
+
+let s = "egg", t = "add"
+console.log(isIsomorphic(s, t));
