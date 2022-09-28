@@ -133,3 +133,43 @@ var searchInsert = function(nums, target) {
         
         
     };
+
+
+// palindrome number
+// time complexity: O(n);
+// space complexity: O(n) need to store new string verson of the number and traverse over it 
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+ var isPalindrome = function(x) {
+    //     input: take an integer and check if its palindrome
+        if(x < 0) return false;
+        
+    //     convert x to string?
+    //     or build string without it
+        
+        // let stringNum = x.toString();
+        let stringNum = "";
+        
+        while(x !== 0) {
+            let digit = Math.floor(x % 10);
+            stringNum+= digit;
+            x = Math.floor(x / 10);
+        }
+        
+        console.log(stringNum);
+        let left = 0;
+        let right = stringNum.length -1;
+        
+        while(left < right) {
+            if(stringNum.charAt(left) !== stringNum.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        
+        return true;
+    };
+    
