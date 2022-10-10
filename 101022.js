@@ -115,3 +115,48 @@ var canConstruct = function (ransomNote, magazine) {
 
 //     time Complexity: O(m) since worst case m is going to be the longest since we create a map
 // Spacce Complexity: O(1) since there are never over 26 characters in the alphabet
+
+// climbing Stairs
+// You are climbing a staircase. It takes n steps to reach the top.
+// Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+// example: takes 1 step to go one step up, 2 steps for 2 stairs
+// 3 stairs = 3 steps
+// basically approave like fibonacci
+
+let stairMap = {
+    1: 1, 
+    2: 2
+}
+var climbStairs = function(n) {
+//     recursive problem like for fibonacci's number
+//     can use a hashmap that is created globally or use iterative bottom up approach
+// Time complexity: O(n);
+// Space: O(n) because recusrion call stack
+    if(stairMap[n] !== undefined) return stairMap[n]
+    
+    let answer = climbStairs(n - 1) + climbStairs(n - 2);
+    stairMap[n] = answer;
+    
+    return stairMap[n];
+
+
+    // iterative with no space compexity;
+
+
+    if(n <=3) {
+        return n;
+    }
+
+    let prev = 3;
+    let prevPrev = 2;
+    for(let i = 4; i <= n; i++) {
+        let answer = prev + prevPrev;
+        prevPrev = prev;
+        prev = answer;
+    }
+
+    return prev;
+    // Time Complexity: O(n);
+    // Space: constant
+};
