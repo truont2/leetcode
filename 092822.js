@@ -180,3 +180,41 @@ Given an unsorted array of integers nums, return the length of the longest conse
 
 You must write an algorithm that runs in O(n) time.
 */
+
+// var longestConsecutive = function(nums) {
+//     //     Time: only visit each element at least twice O(n)
+// //     space: O(n);
+// //     for in iterates over keys
+// //     for of goes over the values
+//     let values = new Set();
+    
+//     for(const num of nums) {
+//         values.add(num);
+//     }
+    
+//     let longest = 0;
+    
+//     for(num of nums) {
+//         if(!values.has(num - 1)) {
+//             let length = 0;
+//             while(values.has(num + length)) {
+//                   length += 1;
+//             }
+            
+//             longest = Math.max(length, longest);
+//         }
+//     }
+    
+//     return longest;
+// };
+
+// approach:
+/*
+1. add all the values to a set. lookup in a set is constant so makes it easy
+2. iterate over each element and look for if a value has a left value
+    ex: 100, does the set contain 99? if so, it must be a start of a sequence
+    starts of a sequence do not have any left values because they are the start 
+3. if you find a start, increment the counter to see how many consecutive values do exist in the set
+4. once you find the longest possible, update the maxSequence lenght variable and return it at the end
+
+*/
