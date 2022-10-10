@@ -1,7 +1,4 @@
 // valid parentheses
-
-const e = require("express");
-
 // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 // An input string is valid if:
 // Open brackets must be closed by the same type of brackets.
@@ -43,7 +40,7 @@ var isVlaid = function (s) {
   return true;
 };
 
-console.log(isVlaid(example));
+// console.log(isVlaid(example));
 
 // valid Anagram
 // Given two strings s and t, return true if t is an anagram of s, and false otherwise.
@@ -133,30 +130,53 @@ var climbStairs = function(n) {
 //     can use a hashmap that is created globally or use iterative bottom up approach
 // Time complexity: O(n);
 // Space: O(n) because recusrion call stack
-    if(stairMap[n] !== undefined) return stairMap[n]
+    // if(stairMap[n] !== undefined) return stairMap[n]
     
-    let answer = climbStairs(n - 1) + climbStairs(n - 2);
-    stairMap[n] = answer;
+    // let answer = climbStairs(n - 1) + climbStairs(n - 2);
+    // stairMap[n] = answer;
     
-    return stairMap[n];
+    // return stairMap[n];
 
 
     // iterative with no space compexity;
 
 
-    if(n <=3) {
-        return n;
-    }
+    // if(n <=3) {
+    //     return n;
+    // }
 
-    let prev = 3;
-    let prevPrev = 2;
-    for(let i = 4; i <= n; i++) {
-        let answer = prev + prevPrev;
-        prevPrev = prev;
-        prev = answer;
-    }
+    // let prev = 3;
+    // let prevPrev = 2;
+    // for(let i = 4; i <= n; i++) {
+    //     let answer = prev + prevPrev;
+    //     prevPrev = prev;
+    //     prev = answer;
+    // }
 
-    return prev;
+    // return prev;
     // Time Complexity: O(n);
     // Space: constant
 };
+
+// reverse word 
+// High Level: traverse the word backwards
+// if the current element is a space skip, otherwise add it to a stirng
+// key: add spaces whent the lendth is greater than zero then add the word: word + space(since string > 0) + word
+
+var reverseWords = function(s) {
+    let reversedStr = '';
+    let stringArr = s.split(" ");
+
+    for(let i = stringArr.length - 1; i >= 0; i--) {
+        if(stringArr[i] !== "") {
+            if(reversedStr.length > 0) {
+                reversedStr += " "
+            }
+            reversedStr += stringArr[i];
+        }
+    }
+
+    return reversedStr;
+}
+let example2 = "  hello world  "
+console.log(reverseWords(example2));
